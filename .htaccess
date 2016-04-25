@@ -1,0 +1,8 @@
+# 10 minutes for image files
+<filesMatch ".(jpg|jpeg|png|gif|ico)$">
+Header set Cache-Control "max-age=600, public"
+</filesMatch>
+# 2 hours for css and js
+<filesMatch ".(css|js)$">
+Header set Cache-Control "max-age=7200, public"
+</filesMatch>
