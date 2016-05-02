@@ -15,3 +15,6 @@ remove b, strong { font-weight: bold; }: repetitive definition
 remove body { background: #fff; }: default background is white
 
 change 2048 img source
+
+simplify resizePizzas()
+remove determineDx()
