@@ -18,3 +18,6 @@ change 2048 img source
 
 simplify resizePizzas()
 remove determineDx()
+
+simplify updatePositions()
+add will-change to floating pizzas
