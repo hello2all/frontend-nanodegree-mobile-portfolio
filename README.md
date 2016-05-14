@@ -28,5 +28,3 @@ remove determineDx()
 simplify updatePositions()
 
 add will-change to floating pizzas
-
-adjust amount of sliding pizzas need to be generated
