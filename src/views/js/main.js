@@ -502,7 +502,7 @@ function updatePositions() {
     phase.push(Math.sin(scroll / 1250 + i) * 100);
   }
   // Assign movement value to background pizzas
-  for (var i = 0; i < items.length; i++) {
+  for (i = 0; i < items.length; i++) {
     items[i].style.left = itemspos[i] + phase[i%5] + 'px';
   }
 
