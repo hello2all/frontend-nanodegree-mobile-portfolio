@@ -1,5 +1,6 @@
 ## Access:
-Project site is hosted on apache, for reviewing, please [Click here](http://192.241.225.208)
+Project site is hosted on apache, for reviewing, please [Click here](http://192.241.225.208).
+For local review, open src/index.html.
 
 ## Modifications:
 remove font
@@ -27,3 +28,5 @@ remove determineDx()
 simplify updatePositions()
 
 add will-change to floating pizzas
+
+adjust amount of sliding pizzas need to be generated

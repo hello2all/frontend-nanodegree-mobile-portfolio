@@ -422,6 +422,7 @@ var resizePizzas = function(size) {
   changeSliderLabel(size);
 
   // Iterates through pizza elements on the page and changes their widths
+  // In order to avoid trigger FSL, the original determineDx() function has been removed, all pizzas are given a absolute size
   function changePizzaSizes(size) {
     var pizzas = document.querySelectorAll(".randomPizzaContainer");
     var NewWidth;
@@ -440,7 +441,7 @@ var resizePizzas = function(size) {
         console.log("bug in sizeSwitcher");
     }
     pizzas.forEach(function(pizza){
-      pizza.style.width = NewWidth + '%';
+      pizza.style.width = NewWidth + '%'; // Assign absolute size
     });
   }
 
@@ -456,8 +457,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas"); // get all randomPizzas elements
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -495,9 +496,14 @@ function updatePositions() {
     itemspos.push(mover.basicLeft);
   });
   var scroll = document.body.scrollTop;
+  var phase = [];
+  // Calculate 5 moving phases for background pizzas
+  for (var i = 0; i < 5; i++) {
+    phase.push(Math.sin(scroll / 1250 + i) * 100);
+  }
+  // Assign movement value to background pizzas
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((scroll / 1250)+ (i % 5));
-    items[i].style.left = itemspos[i] + 100 * phase + 'px';
+    items[i].style.left = itemspos[i] + phase[i%5] + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -517,7 +523,9 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  var intViewportHeight = window.innerHeight;
+  var Pizza_amount = intViewportHeight / 20;  // Calculate amount of sliding pizzas
+  for (var i = 0; i < Pizza_amount; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
